@@ -129,6 +129,9 @@ class Zombie extends WalkingMonster implements IntfCanEquip, IntfCanBreed, Monst
 	 * @param Entity $player
 	 */
 	public function attackEntity(Entity $player){
+		if ($player->getGamemode() === 1) {
+			return;
+		}
 		if($this->attackDelay > 10 && $this->distanceSquared($player) < 2){
 			$this->attackDelay = 0;
 			// maybe this needs some rework ... as it should be calculated within the event class and take
